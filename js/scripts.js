@@ -40,5 +40,20 @@ Triangle.prototype.typeOfTriangle = function () {
 };
 
 $(function() {
+  $('form#new-triangle').submit(function(event) {
+    event.preventDefault();
 
+    var sideOne = $('input#new-side-one').val();
+    var sideTwo = $('input#new-side-two').val();
+    var sideThree = $('input#new-side-three').val();
+
+    var newTriangle = new Triangle(sideOne, sideTwo, sideThree);
+
+    $('div#triangle-info').show();
+    $('div#triangle-info h1').text(newTriangle.typeOfTriangle());
+
+    $('input#new-side-one').val('');
+    $('input#new-side-two').val('');
+    $('input#new-side-three').val('');
+  });
 });
